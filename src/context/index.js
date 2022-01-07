@@ -3,17 +3,20 @@ import React, { Component } from 'react';
 const MyContext = React.createContext();
 
 class MyProvider extends Component {
-    state = {
-        stage: 1,
-        players: [],
-        result: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: {
+                stage: 1,
+                players: [],
+                result: ''
+            }
+        }
     }
 
     render() {
-        return (
-            <MyContext.Provider value={{
-                state: this.state
-            }}>
+        return(
+            <MyContext.Provider value={this.state.value}>
                 {this.props.children}
             </MyContext.Provider>
         )
